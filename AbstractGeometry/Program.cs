@@ -1,5 +1,6 @@
-﻿//#define RECTANGLE
+﻿#define RECTANGLE
 //#define TRIANGLE
+//#define CIRCLE
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +27,12 @@ namespace AbstractGeometry
 				Console.WindowWidth, Console.WindowHeight
 				);
 			PaintEventArgs e = new PaintEventArgs(graphics, window_rect);
-
+	
 
 #if RECTANGLE
-			Rectangle rectangle = new Rectangle(100, 50, 100, 100, 3, Color.Red);
+			Rectangle rectangle = new Rectangle(100, 50, 450, 50, 3, Color.Red);
 			rectangle.Info(e);
-			Square square = new Square(100, 150, 150, 4, Color.OrangeRed);
+			Square square = new Square(100, 450, 150, 4, Color.OrangeRed);
 			square.Info(e); 
 #endif
 
@@ -43,8 +44,11 @@ namespace AbstractGeometry
 			RightTriangle rightTriangle = new RightTriangle(70, 10, 200, 200, 5, Color.DarkOrange);
 			rightTriangle.Info(e); 
 #endif
-			Circle circle = new Circle(10, 150, 150, 5 ,Color.Orchid);
-			circle.Info(e);
+
+#if CIRCLE
+			Circle circle = new Circle(100, 100, 100, 5, Color.Orchid);
+			circle.Info(e); 
+#endif
 
 		}
 		[DllImport("kernel32.dll")]
