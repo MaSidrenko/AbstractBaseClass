@@ -29,26 +29,26 @@ namespace AbstractGeometry
 			A = a;
 			
 		}
-		public override double get_height_triangle()
+		public override double Get_Height_Triangle()
 		{
 			return Math.Sqrt(Math.Pow(Side, 2) - Math.Pow(A / 2, 2));
 		}
 		public override double GetArea()
 		{
-			return 0.5 * Side * get_height_triangle();
+			return 0.5 * Side * Get_Height_Triangle();
 		}
 		public override double GetPerimeter()
 		{
-			return Side + A + get_height_triangle();
+			return Side + A + Get_Height_Triangle();
 		}
 		public override void Draw(PaintEventArgs e)
 		{
 			Pen pen = new Pen(Color, LineWidth);
 			Point[] vertices =
 			{
-				new Point(StartX, StartY + (int)get_height_triangle()),
+				new Point(StartX, StartY + (int)Get_Height_Triangle()),
 				new Point(StartX + (int)A, StartY),
-				new Point(StartX + (int)A, StartY + (int)get_height_triangle())
+				new Point(StartX + (int)A, StartY + (int)Get_Height_Triangle())
 			};
 			e.Graphics.DrawPolygon(pen, vertices);
 		}

@@ -1,6 +1,6 @@
-﻿#define RECTANGLE
+﻿//#define RECTANGLE
 //#define TRIANGLE
-//#define CIRCLE
+#define CIRCLE
 using System;
 using System.Collections.Generic;
 using System.Linq;

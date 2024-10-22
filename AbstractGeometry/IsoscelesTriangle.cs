@@ -27,13 +27,13 @@ namespace AbstractGeometry
 			Side= side;
 			A = a;
 		}
-		public override double get_height_triangle()
+		public override double Get_Height_Triangle()
 		{
 			return Math.Sqrt(Math.Pow(Side, 2) - Math.Pow(A / 2, 2));
 		}
 		public override double GetArea()
 		{
-			return 0.5 * A * get_height_triangle();
+			return 0.5 * A * Get_Height_Triangle();
 		}
 		public override double GetPerimeter()
 		{
@@ -46,7 +46,7 @@ namespace AbstractGeometry
 			{
 				new Point(StartX, StartY+(int)Side),
 				new Point(StartX + (int)A, StartY + (int)Side),
-				new Point(StartX + (int)A/2, StartY + (int)side - (int) get_height_triangle())
+				new Point(StartX + (int)A/2, StartY + (int)side - (int) Get_Height_Triangle())
 			};
 			e.Graphics.DrawPolygon(pen, vertices);
 		}

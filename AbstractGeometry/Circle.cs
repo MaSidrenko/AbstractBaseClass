@@ -14,27 +14,31 @@ namespace AbstractGeometry
 		double Radius
 		{
 			get => radius;
-			set=>radius = SizeFIlter(value);
+			set => radius = SizeFIlter(value);
 		}
 		public Circle(double radius, int startX, int startY, int lineWidht, Color color): base(startX, startY, lineWidht, color)
 		{
 			Radius = radius;
 		}
 		//public double get_diameter()=>2 * Radius;
-		public double GetDiameter()=>2 * Radius;
-		public override double GetArea()=>Math.PI * (Math.Pow(Radius, 2));
-		
-		public override double GetPerimeter()=>Math.PI * GetDiameter();
-		
+		public double GetDiameter() => 2 * Radius;
+		public override double GetArea() => Math.PI * (Math.Pow(Radius, 2));
+		public override double GetPerimeter() => Math.PI * GetDiameter();
 		public override void Draw(PaintEventArgs e)
 		{
 			Pen pen = new Pen(Color, LineWidth);
-			e.Graphics.DrawEllipse(pen, StartX, StartY, StartX + (float)GetDiameter(),StartY + (float)GetDiameter());
+			e.Graphics.DrawEllipse(pen, StartX, StartY, (float)GetDiameter(), (float)GetDiameter());
 			DrawDiameter(e);
 		}
 		public void DrawDiameter(PaintEventArgs e)
 		{
-			e.Graphics.DrawLine(new Pen(Color, LineWidth),  StartX, StartY, StartX + (float)GetDiameter(), StartY + (float)GetDiameter());
+			double dx = Radius * (1 - 1 / Math.Sqrt(2));
+			e.Graphics.DrawLine
+				(
+					new Pen(Color, LineWidth), 
+					StartX + (float)dx, StartY + (float)dx, 
+					StartX + (float)GetDiameter() - (float)dx, StartY + (float)GetDiameter() - (float)dx
+				);
 		}
 		public override void Info(PaintEventArgs e)
 		{
